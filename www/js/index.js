@@ -49,3 +49,33 @@ var app = {
 };
 
 app.initialize();
+
+function photo()
+{
+
+navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.DATA_URL
+});
+
+function onSuccess(imageData) {
+   
+  var image = document.getElementById('CapturedImg');
+    image.src = "data:image/jpeg;base64," + imageData;
+   
+      $(".imgLiquidFill").imgLiquid({
+        fill: true,
+        horizontalAlign: "center",
+        verticalAlign: "top"
+    });
+
+
+
+}
+
+function onFail(message) {
+   // alert('Failed because: ' + message);
+}
+
+
+
+}
