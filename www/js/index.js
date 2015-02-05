@@ -52,13 +52,13 @@ app.initialize();
 
 function photo()
 {
-
+alert("entro");
 navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.DATA_URL
 });
 
 function onSuccess(imageData) {
-   
+   alert(imageData);
   var image = document.getElementById('CapturedImg');
     image.src = "data:image/jpeg;base64," + imageData;
    
@@ -73,7 +73,7 @@ function onSuccess(imageData) {
 }
 
 function onFail(message) {
-   // alert('Failed because: ' + message);
+    alert('Failed because: ' + message);
 }
 
 
