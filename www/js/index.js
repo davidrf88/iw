@@ -10,7 +10,7 @@ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 });
 
 function onSuccess(imageData) {
-   
+   alert(imageData);
   var image = document.getElementById('CapturedImg');
     image.src = "data:image/jpeg;base64," + imageData;
    
@@ -33,9 +33,10 @@ function onFail(message) {
 }
 function sharing()
 {
-  alert('entro');
-  window.plugins.socialsharing.share('Message only');
-alert("salio");
+var image = document.getElementById('CapturedImg');
+    
+
+  window.plugins.socialsharing.share(null, 'Imagen test', image.src, null);
 
 }
 
