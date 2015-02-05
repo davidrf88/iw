@@ -83,12 +83,11 @@
     CDVPluginResult * pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:completed];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
   }];
-
-   NSArray * socialSharingExcludeActivities = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"SocialSharingExcludeActivities"];
-   if (socialSharingExcludeActivities!=nil && [socialSharingExcludeActivities count] > 0) {
-       activityVC.excludedActivityTypes = socialSharingExcludeActivities;
-   }
-
+  
+  // possible future addition: exclude some share targets.. if building locally you may uncomment these lines
+  //    NSArray * excludeActivities = @[UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard];
+  //    activityVC.excludedActivityTypes = excludeActivities;
+  
   // iPad on iOS >= 8 needs a different approach
   if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
     NSString* iPadCoords = [self getIPadPopupCoordinates];
