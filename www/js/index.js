@@ -10,7 +10,7 @@ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 });
 
 function onSuccess(imageData) {
-   alert(imageData);
+
   var image = document.getElementById('CapturedImg');
     image.src = "data:image/jpeg;base64," + imageData;
    
