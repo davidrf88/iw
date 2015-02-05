@@ -11,8 +11,16 @@ navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
 
 function onSuccess(imageData) {
    
-    var image = document.getElementById('CapturedImg');
+  var image = document.getElementById('CapturedImg');
     image.src = "data:image/jpeg;base64," + imageData;
+   
+      $(".imgLiquidFill").imgLiquid({
+        fill: true,
+        horizontalAlign: "center",
+        verticalAlign: "top"
+    });
+
+
 
 }
 
@@ -21,6 +29,13 @@ function onFail(message) {
 }
 
 
+
+}
+function sharing()
+{
+  alert('entro');
+  window.plugins.socialsharing.share('Message only');
+alert("salio");
 
 }
 
