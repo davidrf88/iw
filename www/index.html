@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
     distributed with this work for additional information
@@ -23,35 +25,125 @@
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
+       <link rel="stylesheet" href="css/jquery.mobile.min.css" />
+       <link rel="stylesheet" href="css/bxslider.css" />
+       <link rel="stylesheet" href="css/index.css" />
         <title>Hello World</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-            <input type="button" value="foto" onclick="alert();photo();" />
+     <div id="home" data-role="page" data-theme="b">
+  <div data-role="header" data-position="fixed">
+    <h3>Interwebs</h3>
+  </div> 
+  <div role="main" class="ui-content">
+      
+<ul class="bxslider">
+  <li><img src="img/fondo-1.jpg" /></li>
+  <li><img src="img/fondo-2.jpg" /></li>
+  <li><img src="img/fondo-3.png" /></li>
+</ul>
 
-<button onclick="window.plugins.socialsharing.share('Message only')">message only</button>
-<button onclick="window.plugins.socialsharing.share('Message and subject', 'The subject')">message and subject</button>
-<button onclick="window.plugins.socialsharing.share(null, null, null, 'http://www.x-services.nl')">link only</button>
-<button onclick="window.plugins.socialsharing.share('Message and link', null, null, 'http://www.x-services.nl')">message and link</button>
-<button onclick="window.plugins.socialsharing.share(null, null, 'https://www.google.nl/images/srpr/logo4w.png', null)">image only</button>
-// Beware: passing a base64 file as 'data:' is not supported on Android 2.x: https://code.google.com/p/android/issues/detail?id=7901#c43
-// Hint: when sharing a base64 encoded file on Android you can set the filename by passing it as the subject (second param)
-<button onclick="window.plugins.socialsharing.share(null, 'Android filename', 'data:image/png;base64,R0lGODlhDAAMALMBAP8AAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAUKAAEALAAAAAAMAAwAQAQZMMhJK7iY4p3nlZ8XgmNlnibXdVqolmhcRQA7', null)">base64 image only</button>
-// Hint: you can share multiple files by using an array as thirds param: ['file 1','file 2', ..], but beware of this Android Kitkat Facebook issue: [#164]
-<button onclick="window.plugins.socialsharing.share('Message and image', null, 'https://www.google.nl/images/srpr/logo4w.png', null)">message and image</button>
-<button onclick="window.plugins.socialsharing.share('Message, image and link', null, 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, image and link</button>
-<button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
+      
+
+
+  </div>
+  <div data-position="fixed" data-role="footer">
+    <div data-role="navbar">
+      <ul>
+        <li>
+          <a data-icon="home" class="ui-btn-active ui-state-persist">Inicio</a>
+        </li>
+        <li>
+          <a data-icon="eye" href="#demo">Demo</a>
+        </li>
+        <li>
+          <a data-icon="phone" href="#contacto">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="demo" data-role="page" data-theme="b">
+ <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <img src="img/Camera.png" width="50" onclick="photo();" />
+                    </div>
+                    <div class="ui-block-b"></div>
+                </div>
+                <div style="text-align:center;">
+<div class="boxSep" >
+    <div class="imgLiquidFill imgLiquid" style="width:180px; height:180px;">
+        <img  id="CapturedImg"  />
+    </div>
+</div>
+</div>
+
+
+<input type="button" value="compartir" onclick="alert();sharing();" />
+            <input type="button" value="Contacts" onclick="Contacts();" />
+            <ul id="listCon" data-role="listview">
+                
+            </ul>
+
+
+
+<div data-position="fixed" data-role="footer">
+    <div data-role="navbar">
+      <ul>
+        <li> 
+          <a data-icon="home" href="#home" >Inicio</a>
+        </li>
+        <li>
+          <a data-icon="eye" class="ui-btn-active ui-state-persist" >Demo</a>
+        </li>
+        <li>
+          <a data-icon="phone" href="#contacto">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div id="contacto" data-role="page" data-theme="b">
+
+
+<div data-position="fixed" data-role="footer">
+    <div data-role="navbar">
+      <ul>
+        <li> 
+          <a data-icon="home" href="#home" >Inicio</a>
+        </li>
+        <li>
+          <a data-icon="eye" href="#demo"  >Demo</a>
+        </li>
+        <li>
+          <a data-icon="phone" class="ui-btn-active ui-state-persist">Contacto</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>
+
+
 
             
-        </div>
+
         <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.mobile.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/bxslider.js"></script>
+        <script type="text/javascript" src="js/imgLiquid-min.js"></script>
+        
+
+        
     </body>
 </html>
